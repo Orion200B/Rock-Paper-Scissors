@@ -1,9 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
-let tie= 0;
-let rounds = 3;
+let rounds = 6;
 
-for(let i = 0; i < rounds; i++){
+for(let i = 1; i < rounds; i++){
     let playerChoice = prompt("Type below your choice: Rock, Paper or Scissors");
     let array = ["Rock","Paper","Scissors"];
     function getComputerChoice(){
@@ -18,9 +17,9 @@ for(let i = 0; i < rounds; i++){
     playerChoice = fixTypos(playerChoice);
 
     function playGame(playerChoice, computerChoice){
+        console.log("You chose: " + playerChoice + " Computer chose: " + computerChoice);
         if(playerChoice == computerChoice){
             console.log("It's a Tie");
-            tie++;
         }
         else if(playerChoice == "Rock" && computerChoice=="Paper" || 
         playerChoice == "Paper" && computerChoice=="Rock" || 
@@ -36,19 +35,19 @@ for(let i = 0; i < rounds; i++){
             console.log("Computer Won");
             computerScore++;
         }
-        console.log("Player: " + playerScore,"Computer: " + computerScore,"Ties: " + tie);
-        console.log("Rounds: " + rounds);
+        console.log("Points -> Player: " + playerScore + " Computer: " + computerScore);
+        console.log("Round: " + i);
     }
     console.log(playGame(playerChoice, computerChoice));
     if(i == rounds - 1){
-        if(computerScore > playerScore && computerScore > tie){
+        if(computerScore > playerScore){
             console.log("Computer Won!");
         }
-        else if(playerScore > computerScore && playerScore > tie){
+        else if(playerScore > computerScore){
             console.log("Player Won!");
         }
-        else if(tie > computerScore && tie > playerScore){
-            console.log("It's a tie!");
+        else if(playerScore == computerScore){
+            console.log("It's a Tie!")
         }
     }
 }
